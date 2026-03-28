@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Voiture;
 use Illuminate\Http\Request;
+use Symfony\Component\ErrorHandler\Debug;
 
 class VoitureController extends Controller
 {
@@ -28,7 +29,14 @@ class VoitureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $new_voiture = $request->validate([
+            'modele' => 'required|string',
+            'nb_places' => 'required|integer|min:1',
+            'id_employe' => 'required|exists:employes,id'
+        ]);
+
+        Voiture::create($new_voiture);
+        return redirect()->route('employes.show', $request->id_employe)->with('success', 'Voiture créée avec succès.');
     }
 
     /**

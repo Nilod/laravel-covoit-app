@@ -15,7 +15,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('id_employe')->constrained('employes');
             $table->foreignId('id_campuse')->constrained('campuses');
-            $table->primary('id_employe', 'id_campuse');
+            $table->primary(['id_employe', 'id_campuse']);
         });
     }
 

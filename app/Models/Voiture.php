@@ -15,7 +15,7 @@ class Voiture extends Model
         'id_employe'
     ];
 
-    public function employes() {
+    public function employe() {
         return $this->belongsTo(Employe::class, 'id_employe');
     }
 

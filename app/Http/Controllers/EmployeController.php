@@ -79,4 +79,9 @@ class EmployeController extends Controller
         $employe = Employe::findOrFail($id);
         $employe->delete;
     }
+
+    public function addVoiture(string $id) {
+        $employe = Employe::findOrFail($id);
+        return view('employes.add-voiture', compact('employe'));
+    }
 }
